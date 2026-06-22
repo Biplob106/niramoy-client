@@ -4,32 +4,44 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
+import { axiosPublic } from "@/lib/axios";
 
 export default function RegisterPage() {
   const { createUser, updateUserProfile, googleSignIn } = useAuth();
   const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      await createUser(data.email, data.password);          // 1. account তৈরি
-      await updateUserProfile(data.name, data.photo);        // 2. নাম + ছবি সেট
-      toast.success("Registration successful!");
-      router.push("/");
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+ const onSubmit = async (data) => {
+  try {
+    await createUser(data.email, data.password);
+    await updateUserProfile(data.name, data.photo);
+    await axiosPublic.post("/users", {        // ← database-এ save
+      name: data.name,
+      email: data.email,
+      photo: data.photo,
+    });
+    toast.success("Registration successful!");
+    router.push("/");
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
   const handleGoogle = async () => {
-    try {
-      await googleSignIn();
-      toast.success("Logged in with Google!");
-      router.push("/");
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+  try {
+    const result = await googleSignIn();
+    const loggedUser = result.user;
+    await axiosPublic.post("/users", {
+      name: loggedUser.displayName,
+      email: loggedUser.email,
+      photo: loggedUser.photoURL,
+    });
+    toast.success("Logged in with Google!");
+    router.push("/");
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200">

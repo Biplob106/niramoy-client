@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useEffect, useState } from "react";
+import { axiosPublic } from "@/lib/axios";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -44,12 +45,20 @@ export default function AuthProvider({ children }) {
 
   // কে লগইন আছে সেটা সবসময় খেয়াল রাখে
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
+  const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    setUser(currentUser);
+    if (currentUser?.email) {
+      // login করা আছে → কার্ড নাও আর রেখে দাও
+      const res = await axiosPublic.post("/jwt", { email: currentUser.email });
+      localStorage.setItem("access-token", res.data.token);
+    } else {
+      // logout → কার্ড মুছে দাও
+      localStorage.removeItem("access-token");
+    }
+    setLoading(false);
+  });
+  return () => unsubscribe();
+}, []);
 
   const authInfo = { user, loading, createUser, signIn, googleSignIn, updateUserProfile, logOut };
 
