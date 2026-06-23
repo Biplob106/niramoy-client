@@ -2,6 +2,7 @@ import Link from "next/link";
 import FeaturedDoctors from "@/components/FeaturedDoctors";
 import Statistics from "@/components/Statistics";
 import WhyChoose from "@/components/WhyChoose";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   const specializations = [
@@ -35,6 +36,7 @@ export default function Home() {
       <FeaturedDoctors />
       <Statistics />
       <WhyChoose />
+      <Testimonials />
 
 
       {/* Specializations */}
