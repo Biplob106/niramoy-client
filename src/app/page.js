@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FeaturedDoctors from "@/components/FeaturedDoctors";
 
 export default function Home() {
   const specializations = [
@@ -28,6 +29,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <FeaturedDoctors />
 
       {/* Specializations */}
       <section className="py-16 px-4 max-w-6xl mx-auto">
