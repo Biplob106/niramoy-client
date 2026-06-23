@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FeaturedDoctors from "@/components/FeaturedDoctors";
 import Statistics from "@/components/Statistics";
+import WhyChoose from "@/components/WhyChoose";
 
 export default function Home() {
   const specializations = [
@@ -33,6 +34,7 @@ export default function Home() {
 
       <FeaturedDoctors />
       <Statistics />
+      <WhyChoose />
 
 
       {/* Specializations */}
