@@ -12,6 +12,7 @@ export default function DashboardLayout({ children }) {
       { label: "My Appointments", href: "/dashboard/appointments" },
       { label: "Payment History", href: "/dashboard/payments" },
       { label: "My Reviews", href: "/dashboard/reviews" },
+      { label: "My Profile", href: "/dashboard/profile" },
     ],
     doctor: [
       { label: "Overview", href: "/dashboard" },
