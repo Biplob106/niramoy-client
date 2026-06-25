@@ -20,6 +20,11 @@ export default function MyAppointmentsPage() {
   const [newDate, setNewDate] = useState("");
   const [newTime, setNewTime] = useState("");
 
+  // prescription view modal state
+  const [viewingRx, setViewingRx] = useState(null); // appointment
+  const [prescription, setPrescription] = useState(null);
+  const [rxLoading, setRxLoading] = useState(false);
+
   const loadData = () => {
     if (user?.email) {
       axiosSecure
@@ -78,6 +83,21 @@ export default function MyAppointmentsPage() {
       loadData();
     } catch {
       toast.error("রিশিডিউল ব্যর্থ হয়েছে");
+    }
+  };
+
+  // prescription দেখা (read-only)
+  const viewPrescription = async (a) => {
+    setViewingRx(a);
+    setPrescription(null);
+    setRxLoading(true);
+    try {
+      const res = await axiosSecure.get(`/prescriptions/${a._id}`);
+      setPrescription(res.data);
+    } catch {
+      toast.error("প্রেসক্রিপশন আনা যায়নি");
+    } finally {
+      setRxLoading(false);
     }
   };
 
@@ -154,9 +174,18 @@ export default function MyAppointmentsPage() {
                           </button>
                         </>
                       )}
-                      {isLocked(a.appointmentStatus) && (
-                        <span className="text-sm opacity-60">—</span>
+                      {a.appointmentStatus === "completed" && (
+                        <button
+                          onClick={() => viewPrescription(a)}
+                          className="btn btn-xs btn-outline btn-success"
+                        >
+                          Prescription
+                        </button>
                       )}
+                      {isLocked(a.appointmentStatus) &&
+                        a.appointmentStatus !== "completed" && (
+                          <span className="text-sm opacity-60">—</span>
+                        )}
                     </td>
                   </tr>
                 ))}
@@ -205,6 +234,64 @@ export default function MyAppointmentsPage() {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {/* Prescription View Modal (read-only) */}
+        {viewingRx && (
+          <div className="modal modal-open">
+            <div className="modal-box">
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-2xl">🩺</span>
+                <h3 className="font-bold text-lg">প্রেসক্রিপশন</h3>
+              </div>
+              <p className="text-sm opacity-60 mb-4">
+                {viewingRx.doctorName} • {viewingRx.appointmentDate}
+              </p>
+
+              {rxLoading ? (
+                <div className="flex justify-center py-8">
+                  <span className="loading loading-spinner loading-lg text-primary"></span>
+                </div>
+              ) : !prescription?.appointmentId ? (
+                <p className="opacity-60 py-6 text-center">
+                  ডাক্তার এখনো প্রেসক্রিপশন যোগ করেননি।
+                </p>
+              ) : (
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-sm font-semibold opacity-60">রোগ নির্ণয়</p>
+                    <p>{prescription.diagnosis || "—"}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold opacity-60">ঔষধ</p>
+                    {prescription.medications?.length ? (
+                      <ul className="list-disc list-inside">
+                        {prescription.medications.map((m, i) => (
+                          <li key={i}>{m}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>—</p>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold opacity-60">নোট</p>
+                    <p>{prescription.notes || "—"}</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="modal-action">
+                <button
+                  type="button"
+                  onClick={() => setViewingRx(null)}
+                  className="btn btn-primary"
+                >
+                  বন্ধ করুন
+                </button>
+              </div>
             </div>
           </div>
         )}
