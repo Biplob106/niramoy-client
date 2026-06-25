@@ -2,6 +2,7 @@
 import Link from "next/link";
 import toast from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const { user, logOut } = useAuth();
@@ -46,6 +47,7 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-end gap-2">
+        <ThemeToggle />
         {user ? (
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
