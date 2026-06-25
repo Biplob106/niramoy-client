@@ -31,8 +31,10 @@ export default function BookPage() {
       await axiosSecure.post("/appointments", {
         patientId: user.email,
         patientName: user.displayName,
+        doctorEmail: doctor?.email,
         doctorId: id,
         doctorName: doctor?.doctorName,
+        doctorEmail: doctor?.email,
         consultationFee: doctor?.consultationFee,
         appointmentDate: date,
         appointmentTime: time,

@@ -4,6 +4,8 @@ import PrivateRoute from "@/components/PrivateRoute";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import Link from "next/link";
+import useRole from "@/hooks/useRole";
+import DashboardLayout from "@/components/DashboardLayout";
 
 export default function DashboardPage() {
   const { user } = useAuth();
@@ -33,8 +35,11 @@ export default function DashboardPage() {
     return map[status] || "badge-ghost";
   };
 
+  const { role } = useRole();
+
   return (
     <PrivateRoute>
+    <DashboardLayout>
       <div className="min-h-screen py-10 px-4 max-w-5xl mx-auto">
         <h1 className="text-3xl font-bold mb-2">
           স্বাগতম, {user?.displayName} 👋
@@ -42,7 +47,7 @@ export default function DashboardPage() {
         <p className="opacity-70 mb-8">
           আপনার অ্যাপয়েন্টমেন্টগুলো এখানে দেখুন।
         </p>
-
+        <p className="badge badge-secondary mb-4">Role: {role}</p>
         {/* ছোট পরিসংখ্যান */}
         <div className="stats shadow mb-8 w-full">
           <div className="stat">
@@ -120,6 +125,7 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+    </DashboardLayout>
     </PrivateRoute>
   );
 }
