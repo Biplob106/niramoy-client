@@ -32,10 +32,13 @@ export default function DoctorsPage() {
   }, [search, sort]);
 
   return (
-    <div className="min-h-screen py-12 px-4 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-10">ডাক্তার খুঁজুন</h1>
+    <div className="min-h-screen py-12 px-4 max-w-7xl mx-auto">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold">ডাক্তার খুঁজুন</h1>
+        <p className="opacity-60 mt-2">নাম বা বিশেষত্ব দিয়ে আপনার পছন্দের বিশেষজ্ঞ খুঁজুন</p>
+      </div>
 
-      <div className="flex flex-col md:flex-row justify-center gap-3 mb-8">
+      <div className="card bg-base-100 shadow-md border border-base-200 p-4 mb-10 flex flex-col md:flex-row justify-center gap-3">
         <input
           type="text"
           placeholder="নাম বা বিশেষত্ব দিয়ে খুঁজুন..."
@@ -83,35 +86,34 @@ export default function DoctorsPage() {
       ) : (
         <>
           {view === "card" ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {doctors.map((doc) => (
                 <div
                   key={doc._id}
-                  className="card bg-base-100 shadow-md hover:shadow-xl transition"
+                  className="card-hover card bg-base-100 shadow-md border border-base-200 overflow-hidden"
                 >
-                  <figure className="px-6 pt-6">
+                  <div className="h-16 bg-gradient-to-r from-primary to-secondary"></div>
+                  <div className="card-body items-center text-center -mt-12 pt-0">
                     <img
                       src={doc.profileImage}
                       alt={doc.doctorName}
-                      className="rounded-full w-24 h-24 object-cover"
+                      className="rounded-full w-24 h-24 object-cover ring-4 ring-base-100 shadow-lg"
                     />
-                  </figure>
-                  <div className="card-body items-center text-center">
-                    <h3 className="card-title">{doc.doctorName}</h3>
+                    <h3 className="card-title mt-2">{doc.doctorName}</h3>
                     <div className="badge badge-primary badge-outline">
                       {doc.specialization}
                     </div>
                     <p className="text-sm opacity-70">
                       {doc.experience} years • {doc.hospitalName}
                     </p>
-                    <p className="font-semibold text-primary">
-                      Fee: ৳{doc.consultationFee}
+                    <p className="font-bold text-primary text-lg">
+                      ৳{doc.consultationFee}
                     </p>
                     <Link
                       href={`/doctors/${doc._id}`}
-                      className="btn btn-primary btn-sm mt-2"
+                      className="btn btn-primary btn-sm btn-block mt-2"
                     >
-                      View Details
+                      বিস্তারিত দেখুন
                     </Link>
                   </div>
                 </div>
