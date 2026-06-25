@@ -21,6 +21,7 @@ export default function RegisterPage() {
       name: data.name,
       email: data.email,
       photo: data.photo,
+      role: data.role || "patient",          // ← patient / doctor
     });
     toast.success("Registration successful!");
     router.push("/");
@@ -68,6 +69,17 @@ export default function RegisterPage() {
               <input type="text" className="input input-bordered w-full"
                 {...register("photo", { required: "Photo URL is required" })} />
               {errors.photo && <p className="text-error text-sm">{errors.photo.message}</p>}
+            </div>
+            <div>
+              <label className="label">Register As</label>
+              <select className="select select-bordered w-full"
+                {...register("role")} defaultValue="patient">
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+              </select>
+              <p className="text-xs opacity-60 mt-1">
+                ডাক্তার হিসেবে রেজিস্টার করলে অ্যাডমিন ভেরিফাই করার পর প্রোফাইল দেখা যাবে।
+              </p>
             </div>
             <div>
               <label className="label">Password</label>
