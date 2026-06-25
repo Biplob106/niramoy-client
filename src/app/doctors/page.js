@@ -12,6 +12,7 @@ export default function DoctorsPage() {
   const [sort, setSort] = useState("");
   const [page, setPage] = useState(1);          // ← এখনকার পেজ
   const [totalPages, setTotalPages] = useState(1); // ← মোট কয় পেজ
+  const [view, setView] = useState("card");        // ← card / table লেআউট
 
   useEffect(() => {
     setLoading(true);
@@ -53,6 +54,24 @@ export default function DoctorsPage() {
           <option value="experience">Experience</option>
           <option value="rating">Highest Rating</option>
         </select>
+
+        {/* লেআউট পরিবর্তন: কার্ড ↔ টেবিল */}
+        <div className="join">
+          <button
+            onClick={() => setView("card")}
+            className={`btn join-item ${view === "card" ? "btn-primary" : "btn-outline"}`}
+            aria-label="card view"
+          >
+            ▦ কার্ড
+          </button>
+          <button
+            onClick={() => setView("table")}
+            className={`btn join-item ${view === "table" ? "btn-primary" : "btn-outline"}`}
+            aria-label="table view"
+          >
+            ☰ টেবিল
+          </button>
+        </div>
       </div>
 
       {loading ? (
@@ -63,40 +82,81 @@ export default function DoctorsPage() {
         <p className="text-center opacity-60">কোনো ডাক্তার পাওয়া যায়নি।</p>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {doctors.map((doc) => (
-              <div
-                key={doc._id}
-                className="card bg-base-100 shadow-md hover:shadow-xl transition"
-              >
-                <figure className="px-6 pt-6">
-                  <img
-                    src={doc.profileImage}
-                    alt={doc.doctorName}
-                    className="rounded-full w-24 h-24 object-cover"
-                  />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <h3 className="card-title">{doc.doctorName}</h3>
-                  <div className="badge badge-primary badge-outline">
-                    {doc.specialization}
+          {view === "card" ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {doctors.map((doc) => (
+                <div
+                  key={doc._id}
+                  className="card bg-base-100 shadow-md hover:shadow-xl transition"
+                >
+                  <figure className="px-6 pt-6">
+                    <img
+                      src={doc.profileImage}
+                      alt={doc.doctorName}
+                      className="rounded-full w-24 h-24 object-cover"
+                    />
+                  </figure>
+                  <div className="card-body items-center text-center">
+                    <h3 className="card-title">{doc.doctorName}</h3>
+                    <div className="badge badge-primary badge-outline">
+                      {doc.specialization}
+                    </div>
+                    <p className="text-sm opacity-70">
+                      {doc.experience} years • {doc.hospitalName}
+                    </p>
+                    <p className="font-semibold text-primary">
+                      Fee: ৳{doc.consultationFee}
+                    </p>
+                    <Link
+                      href={`/doctors/${doc._id}`}
+                      className="btn btn-primary btn-sm mt-2"
+                    >
+                      View Details
+                    </Link>
                   </div>
-                  <p className="text-sm opacity-70">
-                    {doc.experience} years • {doc.hospitalName}
-                  </p>
-                  <p className="font-semibold text-primary">
-                    Fee: ৳{doc.consultationFee}
-                  </p>
-                  <Link
-                    href={`/doctors/${doc._id}`}
-                    className="btn btn-primary btn-sm mt-2"
-                  >
-                    View Details
-                  </Link>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Doctor</th>
+                    <th>Specialization</th>
+                    <th>Experience</th>
+                    <th>Fee</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {doctors.map((doc) => (
+                    <tr key={doc._id}>
+                      <td className="flex items-center gap-2">
+                        <img
+                          src={doc.profileImage}
+                          alt={doc.doctorName}
+                          className="w-10 h-10 rounded-full object-cover"
+                        />
+                        {doc.doctorName}
+                      </td>
+                      <td>{doc.specialization}</td>
+                      <td>{doc.experience} years</td>
+                      <td className="font-semibold text-primary">৳{doc.consultationFee}</td>
+                      <td>
+                        <Link
+                          href={`/doctors/${doc._id}`}
+                          className="btn btn-primary btn-xs"
+                        >
+                          View Details
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
           {/* Pagination বাটন */}
           <div className="flex justify-center gap-2 mt-10">
