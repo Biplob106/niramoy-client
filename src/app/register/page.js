@@ -5,8 +5,10 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
 import { axiosPublic } from "@/lib/axios";
+import useTitle from "@/hooks/useTitle";
 
 export default function RegisterPage() {
+  useTitle("রেজিস্টার");
   const { createUser, updateUserProfile, googleSignIn } = useAuth();
   const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm();

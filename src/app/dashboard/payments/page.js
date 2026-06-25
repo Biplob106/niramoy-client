@@ -4,8 +4,10 @@ import PrivateRoute from "@/components/PrivateRoute";
 import DashboardLayout from "@/components/DashboardLayout";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 export default function PaymentHistoryPage() {
+  useTitle("পেমেন্ট হিস্ট্রি");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [payments, setPayments] = useState([]);

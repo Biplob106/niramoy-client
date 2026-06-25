@@ -5,8 +5,10 @@ import PrivateRoute from "@/components/PrivateRoute";
 import DashboardLayout from "@/components/DashboardLayout";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 export default function DoctorProfilePage() {
+  useTitle("আমার প্রোফাইল");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [form, setForm] = useState({

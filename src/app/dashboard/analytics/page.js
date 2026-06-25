@@ -12,8 +12,10 @@ import {
 import PrivateRoute from "@/components/PrivateRoute";
 import DashboardLayout from "@/components/DashboardLayout";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 export default function AnalyticsPage() {
+  useTitle("অ্যানালিটিক্স");
   const axiosSecure = useAxiosSecure();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);

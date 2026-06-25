@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import PrivateRoute from "@/components/PrivateRoute";
 import DashboardLayout from "@/components/DashboardLayout";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 export default function ManageDoctorsPage() {
+  useTitle("ডাক্তার ম্যানেজমেন্ট");
   const axiosSecure = useAxiosSecure();
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);

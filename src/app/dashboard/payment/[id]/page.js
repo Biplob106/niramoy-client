@@ -7,8 +7,10 @@ import CheckoutForm from "@/components/CheckoutForm";
 import { stripePromise } from "@/lib/stripe";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 export default function PaymentPage() {
+  useTitle("পেমেন্ট");
   const { id } = useParams();           // appointment id
   const router = useRouter();
   const { user } = useAuth();

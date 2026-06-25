@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import PrivateRoute from "@/components/PrivateRoute";
 import DashboardLayout from "@/components/DashboardLayout";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 export default function AllAppointmentsPage() {
+  useTitle("সব অ্যাপয়েন্টমেন্ট");
   const axiosSecure = useAxiosSecure();
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);

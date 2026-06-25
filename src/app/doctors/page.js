@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { axiosPublic } from "@/lib/axios";
+import useTitle from "@/hooks/useTitle";
 
 export default function DoctorsPage() {
+  useTitle("ডাক্তার খুঁজুন");
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");

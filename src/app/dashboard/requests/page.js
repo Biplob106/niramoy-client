@@ -6,8 +6,10 @@ import DashboardLayout from "@/components/DashboardLayout";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { useRouter } from "next/navigation";
+import useTitle from "@/hooks/useTitle";
 
 export default function RequestsPage() {
+  useTitle("অ্যাপয়েন্টমেন্ট রিকোয়েস্ট");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [appointments, setAppointments] = useState([]);

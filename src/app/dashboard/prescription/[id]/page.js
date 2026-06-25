@@ -5,8 +5,10 @@ import toast from "react-hot-toast";
 import PrivateRoute from "@/components/PrivateRoute";
 import DashboardLayout from "@/components/DashboardLayout";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 export default function PrescriptionPage() {
+  useTitle("প্রেসক্রিপশন");
   const { id } = useParams();   // appointment id
   const router = useRouter();
   const axiosSecure = useAxiosSecure();

@@ -6,8 +6,10 @@ import PrivateRoute from "@/components/PrivateRoute";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { axiosPublic } from "@/lib/axios";
+import useTitle from "@/hooks/useTitle";
 
 export default function BookPage() {
+  useTitle("অ্যাপয়েন্টমেন্ট বুকিং");
   const { id } = useParams();
   const router = useRouter();
   const { user } = useAuth();

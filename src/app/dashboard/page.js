@@ -6,8 +6,10 @@ import useAxiosSecure from "@/hooks/useAxiosSecure";
 import Link from "next/link";
 import useRole from "@/hooks/useRole";
 import DashboardLayout from "@/components/DashboardLayout";
+import useTitle from "@/hooks/useTitle";
 
 export default function DashboardPage() {
+  useTitle("ড্যাশবোর্ড");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [appointments, setAppointments] = useState([]);

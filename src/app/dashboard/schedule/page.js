@@ -5,6 +5,7 @@ import PrivateRoute from "@/components/PrivateRoute";
 import DashboardLayout from "@/components/DashboardLayout";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useTitle from "@/hooks/useTitle";
 
 // সপ্তাহের দিনগুলো (label বাংলায়, value ইংরেজিতে — booking page-এর সাথে মিল রাখতে)
 const WEEK_DAYS = [
@@ -18,6 +19,7 @@ const WEEK_DAYS = [
 ];
 
 export default function SchedulePage() {
+  useTitle("সময়সূচি");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [days, setDays] = useState([]);

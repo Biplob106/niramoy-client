@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { axiosPublic } from "@/lib/axios";
+import useTitle from "@/hooks/useTitle";
 
 export default function DoctorDetailsPage() {
+  useTitle("ডাক্তারের বিবরণ");
   const { id } = useParams();
   const router = useRouter();
   const [doctor, setDoctor] = useState(null);
