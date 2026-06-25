@@ -1,6 +1,12 @@
 "use client";
 import { useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
 import toast from "react-hot-toast";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import useAuth from "@/hooks/useAuth";
@@ -24,7 +30,7 @@ export default function CheckoutForm({ appointment, onSuccess }) {
       });
 
       // ২. card দিয়ে confirm করো
-      const card = elements.getElement(CardElement);
+      const card = elements.getElement(CardNumberElement);
       const result = await stripe.confirmCardPayment(data.clientSecret, {
         payment_method: { card, billing_details: { email: user.email } },
       });
@@ -54,11 +60,34 @@ export default function CheckoutForm({ appointment, onSuccess }) {
     }
   };
 
+  const elementStyle = { style: { base: { fontSize: "16px" } } };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="border p-3 rounded-lg">
-        <CardElement options={{ style: { base: { fontSize: "16px" } } }} />
+      {/* কার্ড নম্বর */}
+      <div>
+        <label className="label text-sm">কার্ড নম্বর</label>
+        <div className="border border-base-300 p-3 rounded-lg">
+          <CardNumberElement options={elementStyle} />
+        </div>
       </div>
+
+      {/* মেয়াদ ও CVC পাশাপাশি */}
+      <div className="flex gap-3">
+        <div className="flex-1">
+          <label className="label text-sm">মেয়াদ (MM/YY)</label>
+          <div className="border border-base-300 p-3 rounded-lg">
+            <CardExpiryElement options={elementStyle} />
+          </div>
+        </div>
+        <div className="flex-1">
+          <label className="label text-sm">CVC</label>
+          <div className="border border-base-300 p-3 rounded-lg">
+            <CardCvcElement options={elementStyle} />
+          </div>
+        </div>
+      </div>
+
       <button type="submit" disabled={!stripe || processing} className="btn btn-primary w-full">
         {processing ? "Processing..." : `Pay ৳${appointment.consultationFee}`}
       </button>
