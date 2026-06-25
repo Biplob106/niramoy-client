@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import useRole from "@/hooks/useRole";
 
 export default function DashboardLayout({ children }) {
   const { role, roleLoading } = useRole();
+  const pathname = usePathname();
 
   // role অনুযায়ী মেনু
   const menus = {
@@ -45,23 +47,44 @@ export default function DashboardLayout({ children }) {
       </div>
 
       {/* Sidebar */}
-      <div className="drawer-side">
+      <div className="drawer-side z-40">
         <label htmlFor="dash-drawer" className="drawer-overlay"></label>
-        <ul className="menu bg-base-200 min-h-full w-64 p-4">
+        <ul className="menu bg-base-200 min-h-full w-64 p-4 border-r border-base-300">
           <li className="mb-4">
-            <span className="text-xl font-bold text-primary">নিরাময়</span>
+            <Link href="/" className="flex items-center gap-2 hover:bg-transparent">
+              <span className="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary text-white font-bold shadow-md">
+                নি
+              </span>
+              <span className="text-xl font-extrabold text-gradient">নিরাময়</span>
+            </Link>
           </li>
+          {role && (
+            <li className="menu-title uppercase text-xs">{role} panel</li>
+          )}
           {roleLoading ? (
             <li><span className="loading loading-spinner loading-sm"></span></li>
           ) : (
-            links.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))
+            links.map((link) => {
+              const active =
+                link.href === "/dashboard"
+                  ? pathname === "/dashboard"
+                  : pathname.startsWith(link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`font-medium ${
+                      active ? "bg-primary text-primary-content" : ""
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })
           )}
           <div className="divider"></div>
-          <li><Link href="/">← Back to Home</Link></li>
+          <li><Link href="/">← হোমে ফিরুন</Link></li>
         </ul>
       </div>
     </div>

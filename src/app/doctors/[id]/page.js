@@ -31,37 +31,60 @@ export default function DoctorDetailsPage() {
     return <p className="text-center py-20 opacity-60">ডাক্তার পাওয়া যায়নি।</p>;
   }
 
-  return (
-    <div className="min-h-screen py-12 px-4 max-w-4xl mx-auto">
-      <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure className="lg:w-1/3 p-6">
-          <img
-            src={doctor.profileImage}
-            alt={doctor.doctorName}
-            className="rounded-xl w-48 h-48 object-cover"
-          />
-        </figure>
-        <div className="card-body lg:w-2/3">
-          <h1 className="text-3xl font-bold text-primary">{doctor.doctorName}</h1>
-          <div className="badge badge-primary badge-outline">{doctor.specialization}</div>
+  const InfoRow = ({ label, value }) => (
+    <div className="flex justify-between gap-4 py-2 border-b border-base-200 last:border-0">
+      <span className="opacity-60">{label}</span>
+      <span className="font-medium text-right">{value || "—"}</span>
+    </div>
+  );
 
-          <div className="space-y-1 mt-3 text-sm">
-            <p><span className="font-semibold">Qualifications:</span> {doctor.qualifications}</p>
-            <p><span className="font-semibold">Experience:</span> {doctor.experience} years</p>
-            <p><span className="font-semibold">Hospital:</span> {doctor.hospitalName}</p>
-            <p><span className="font-semibold">Available Days:</span> {doctor.availableDays?.join(", ")}</p>
-            <p><span className="font-semibold">Available Slots:</span> {doctor.availableSlots?.join(", ")}</p>
-            <p className="text-lg font-bold text-primary mt-2">
-              Consultation Fee: ৳{doctor.consultationFee}
-            </p>
+  return (
+    <div className="min-h-screen py-12 px-4 max-w-5xl mx-auto">
+      <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden">
+        {/* গ্রেডিয়েন্ট হেডার */}
+        <div className="h-28 bg-gradient-to-r from-primary to-secondary"></div>
+
+        <div className="px-6 md:px-10 pb-8 -mt-16">
+          <div className="flex flex-col md:flex-row gap-6 items-center md:items-end">
+            <img
+              src={doctor.profileImage}
+              alt={doctor.doctorName}
+              className="rounded-2xl w-36 h-36 object-cover ring-4 ring-base-100 shadow-lg"
+            />
+            <div className="text-center md:text-left mb-2">
+              <h1 className="text-3xl font-bold">{doctor.doctorName}</h1>
+              <div className="badge badge-primary badge-outline mt-2">
+                {doctor.specialization}
+              </div>
+            </div>
           </div>
 
-          <button
-            onClick={() => router.push(`/doctors/${doctor._id}/book`)}
-            className="btn btn-primary mt-4 w-full md:w-auto"
-          >
-            Book Appointment
-          </button>
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            {/* তথ্য */}
+            <div className="md:col-span-2 card bg-base-200/40 p-6">
+              <h2 className="font-bold text-lg mb-2">পরিচিতি</h2>
+              <InfoRow label="যোগ্যতা" value={doctor.qualifications} />
+              <InfoRow label="অভিজ্ঞতা" value={`${doctor.experience} বছর`} />
+              <InfoRow label="হাসপাতাল" value={doctor.hospitalName} />
+              <InfoRow label="উপলব্ধ দিন" value={doctor.availableDays?.join(", ")} />
+              <InfoRow label="সময় স্লট" value={doctor.availableSlots?.join(", ")} />
+            </div>
+
+            {/* বুকিং কার্ড */}
+            <div className="card bg-base-100 border-2 border-primary/20 p-6 text-center h-fit">
+              <p className="opacity-60 text-sm">কনসালটেশন ফি</p>
+              <p className="text-3xl font-extrabold text-primary my-1">
+                ৳{doctor.consultationFee}
+              </p>
+              <button
+                onClick={() => router.push(`/doctors/${doctor._id}/book`)}
+                className="btn btn-primary btn-block mt-4 shadow-lg shadow-primary/30"
+              >
+                অ্যাপয়েন্টমেন্ট নিন
+              </button>
+              <p className="text-xs opacity-50 mt-3">নিরাপদ অনলাইন পেমেন্ট</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
