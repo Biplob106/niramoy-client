@@ -28,7 +28,7 @@ export default function DoctorCard({ doctor, index = 0 }) {
           <img
             src={imageSrc}
             alt={doctor.doctorName}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-top"
             onError={() => setImgError(true)}
           />
 
