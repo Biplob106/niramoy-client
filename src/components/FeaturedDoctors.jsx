@@ -39,7 +39,7 @@ export default function FeaturedDoctors() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="card-hover card bg-base-100 shadow-md border border-base-200 overflow-hidden"
+                className="card-hover card h-full bg-base-100 shadow-md hover:shadow-xl border border-base-300 rounded-2xl overflow-hidden"
               >
                 {/* গ্রেডিয়েন্ট টপ */}
                 <div className="h-16 bg-gradient-to-r from-primary to-secondary"></div>
@@ -57,7 +57,7 @@ export default function FeaturedDoctors() {
                   <p className="font-bold text-primary text-lg">৳{doc.consultationFee}</p>
                   <Link
                     href={`/doctors/${doc._id}`}
-                    className="btn btn-primary btn-sm btn-block mt-2"
+                    className="btn btn-primary btn-sm btn-block mt-auto transition"
                   >
                     বিস্তারিত দেখুন
                   </Link>

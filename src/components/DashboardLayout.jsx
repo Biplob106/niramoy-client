@@ -73,8 +73,10 @@ export default function DashboardLayout({ children }) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`font-medium ${
-                      active ? "bg-primary text-primary-content" : ""
+                    className={`font-medium transition ${
+                      active
+                        ? "bg-primary text-primary-content hover:bg-primary"
+                        : "hover:bg-primary/10 hover:text-primary"
                     }`}
                   >
                     {link.label}
