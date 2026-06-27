@@ -34,7 +34,7 @@ export default function Testimonials() {
               <span className="absolute top-4 right-5 text-5xl text-primary/15 font-serif leading-none">
                 &rdquo;
               </span>
-              <div className="text-warning text-lg mb-3">
+              <div className="text-primary text-lg mb-3">
                 {"★".repeat(r.rating)}
                 <span className="text-base-300">{"★".repeat(5 - r.rating)}</span>
               </div>

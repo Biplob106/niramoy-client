@@ -32,7 +32,7 @@ export default function Home() {
               বসেই নির্ভরযোগ্য স্বাস্থ্যসেবা পান।
             </p>
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <Link href="/doctors" className="btn btn-secondary btn-lg shadow-lg shadow-secondary/30 transition">
+              <Link href="/doctors" className="btn btn-primary btn-lg shadow-lg shadow-primary/30 transition">
                 ডাক্তার খুঁজুন
               </Link>
               <Link href="/about" className="btn btn-outline btn-primary btn-lg transition">

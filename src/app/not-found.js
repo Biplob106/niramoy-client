@@ -21,7 +21,7 @@ export default function NotFound() {
       <p className="opacity-70 max-w-md mb-8">
         দুঃখিত, আপনি যে পেজটি খুঁজছেন সেটি নেই বা সরিয়ে ফেলা হয়েছে। চলুন আবার সুস্থতার পথে ফিরি।
       </p>
-      <Link href="/" className="btn btn-secondary btn-lg shadow-lg shadow-secondary/30 transition">
+      <Link href="/" className="btn btn-primary btn-lg shadow-lg shadow-primary/30 transition">
         ← হোমে ফিরুন
       </Link>
     </div>

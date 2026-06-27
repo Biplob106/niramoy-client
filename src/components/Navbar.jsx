@@ -90,7 +90,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/login" className="btn btn-outline btn-primary btn-sm transition">লগইন</Link>
-              <Link href="/register" className="btn btn-secondary btn-sm shadow-md shadow-secondary/30 transition">রেজিস্টার</Link>
+              <Link href="/register" className="btn btn-primary btn-sm shadow-md shadow-primary/30 transition">রেজিস্টার</Link>
             </>
           )}
         </div>

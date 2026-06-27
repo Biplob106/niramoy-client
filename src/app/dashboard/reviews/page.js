@@ -202,7 +202,7 @@ export default function MyReviewsPage() {
                 <div className="card-body">
                   <div className="flex justify-between items-start">
                     <h3 className="font-semibold">{r.doctorName}</h3>
-                    <div className="text-warning">{"★".repeat(r.rating)}</div>
+                    <div className="text-primary">{"★".repeat(r.rating)}</div>
                   </div>
                   <p className="opacity-80 text-sm">{r.reviewText}</p>
                   <div className="flex gap-2 mt-2">

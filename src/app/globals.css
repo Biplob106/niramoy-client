@@ -17,7 +17,7 @@
 
   --color-primary: #0e7c7b;         /* Deep Teal — brand, headings, nav, info buttons */
   --color-primary-content: #ffffff;
-  --color-secondary: #ff6b5c;       /* Warm Coral — main CTA only (Book, Pay) */
+  --color-secondary: #14b8a6;       /* Lighter Teal — secondary buttons, highlights */
   --color-secondary-content: #ffffff;
   --color-accent: #0a5c5a;          /* Dark Teal — footer, dark sections, hover */
   --color-accent-content: #ffffff;
@@ -54,12 +54,12 @@
   --color-base-300: #243230;
   --color-base-content: #e6f0ee;
 
-  --color-primary: #1fa89c;
+  --color-primary: #2dd4bf;
   --color-primary-content: #06241f;
-  --color-secondary: #ff7a6b;
-  --color-secondary-content: #2a0a0a;
-  --color-accent: #0a5c5a;
-  --color-accent-content: #ffffff;
+  --color-secondary: #14b8a6;
+  --color-secondary-content: #ffffff;
+  --color-accent: #5dcaa5;
+  --color-accent-content: #06241f;
 
   --color-neutral: #e6f0ee;
   --color-neutral-content: #0f1a1a;
