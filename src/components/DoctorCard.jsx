@@ -6,7 +6,13 @@ import { motion } from "framer-motion";
 export default function DoctorCard({ doctor, index = 0 }) {
   const isVerified = doctor.verificationStatus === "verified";
   const [imgError, setImgError] = useState(false);
-  const showImage = doctor.profileImage && !imgError;
+
+  // মূল ছবি না থাকলে / লোড না হলে — নামের আদ্যক্ষর দিয়ে টিল অ্যাভাটার
+  const fallbackImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+    doctor.doctorName || "Doctor"
+  )}&background=0e7c7b&color=ffffff&size=400&bold=true`;
+  const imageSrc =
+    doctor.profileImage && !imgError ? doctor.profileImage : fallbackImage;
 
   return (
     <motion.div
@@ -19,31 +25,12 @@ export default function DoctorCard({ doctor, index = 0 }) {
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-base-300 bg-base-100 transition hover:-translate-y-1 hover:shadow-xl">
         {/* বড় ইমেজ — কার্ডের মূল ফোকাস */}
         <div className="relative h-48 w-full bg-base-200">
-          {showImage ? (
-            <img
-              src={doctor.profileImage}
-              alt={doctor.doctorName}
-              className="h-full w-full object-cover"
-              onError={() => setImgError(true)}
-            />
-          ) : (
-            <div className="grid h-full w-full place-items-center text-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 opacity-40"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0v.75H4.5v-.75Z"
-                />
-              </svg>
-            </div>
-          )}
+          <img
+            src={imageSrc}
+            alt={doctor.doctorName}
+            className="h-full w-full object-cover"
+            onError={() => setImgError(true)}
+          />
 
           {isVerified && (
             <span className="absolute right-3 top-3 rounded-full bg-primary px-2.5 py-1 text-[0.7rem] font-medium text-white shadow-sm">
