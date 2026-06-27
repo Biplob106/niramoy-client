@@ -88,7 +88,7 @@ export default function DashboardPage() {
             <p className="opacity-60">এখনো কোনো অ্যাপয়েন্টমেন্ট নেই।</p>
           ) : (
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className="table table-zebra">
                 <thead>
                   <tr>
                     <th>Doctor</th><th>Date</th><th>Time</th><th>Status</th><th>Payment</th><th>Action</th>
@@ -146,7 +146,7 @@ export default function DashboardPage() {
             <p className="opacity-60">কোনো appointment নেই।</p>
           ) : (
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className="table table-zebra">
                 <thead>
                   <tr><th>Patient</th><th>Date</th><th>Time</th><th>Status</th></tr>
                 </thead>

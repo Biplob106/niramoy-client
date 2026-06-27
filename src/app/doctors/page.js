@@ -121,7 +121,7 @@ export default function DoctorsPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className="table table-zebra">
                 <thead>
                   <tr>
                     <th>Doctor</th>

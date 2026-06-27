@@ -50,7 +50,7 @@ export default function PaymentHistoryPage() {
           <p className="opacity-60">এখনো কোনো পেমেন্ট করেননি।</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-zebra">
               <thead>
                 <tr>
                   <th>Amount</th>

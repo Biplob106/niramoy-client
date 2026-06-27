@@ -47,7 +47,7 @@ export default function AdminPaymentsPage() {
           <p className="opacity-60">কোনো পেমেন্ট পাওয়া যায়নি।</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-zebra">
               <thead>
                 <tr>
                   <th>Patient</th>
