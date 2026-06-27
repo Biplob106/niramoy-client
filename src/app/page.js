@@ -3,6 +3,7 @@ import FeaturedDoctors from "@/components/FeaturedDoctors";
 import Statistics from "@/components/Statistics";
 import WhyChoose from "@/components/WhyChoose";
 import Testimonials from "@/components/Testimonials";
+import Faq from "@/components/Faq";
 
 export default function Home() {
   const specializations = [
@@ -120,6 +121,7 @@ export default function Home() {
       <WhyChoose />
       <Statistics />
       <Testimonials />
+      <Faq />
     </div>
   );
 }
