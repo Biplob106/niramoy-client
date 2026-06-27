@@ -9,28 +9,29 @@
   default: true;
   color-scheme: light;
 
-  --color-base-100: #fffbf8;
-  --color-base-200: #fbf2ec;
-  --color-base-300: #f1e3d9;
-  --color-base-content: #15302c;
+  /* Deep Teal + Warm Coral — clean, premium healthcare palette */
+  --color-base-100: #ffffff;        /* pure white surface */
+  --color-base-200: #f4f8f7;        /* light mint section background */
+  --color-base-300: #e2e8e6;        /* borders */
+  --color-base-content: #1a2e2c;    /* main text */
 
-  --color-primary: #0e9f8e;
+  --color-primary: #0e7c7b;         /* Deep Teal — brand, headings, nav, info buttons */
   --color-primary-content: #ffffff;
-  --color-secondary: #ff6b6b;
+  --color-secondary: #ff6b5c;       /* Warm Coral — main CTA only (Book, Pay) */
   --color-secondary-content: #ffffff;
-  --color-accent: #ffd166;
-  --color-accent-content: #5a3e00;
+  --color-accent: #0a5c5a;          /* Dark Teal — footer, dark sections, hover */
+  --color-accent-content: #ffffff;
 
-  --color-neutral: #15302c;
-  --color-neutral-content: #fffbf8;
+  --color-neutral: #0e1a1a;         /* near-black */
+  --color-neutral-content: #f4f8f7;
 
-  --color-info: #38bdf8;
-  --color-info-content: #042f49;
-  --color-success: #16a34a;
+  --color-info: #0e7c7b;
+  --color-info-content: #ffffff;
+  --color-success: #22a565;
   --color-success-content: #ffffff;
-  --color-warning: #f59e0b;
+  --color-warning: #f4a52b;
   --color-warning-content: #3a2500;
-  --color-error: #ef4444;
+  --color-error: #e5484d;
   --color-error-content: #ffffff;
 
   --radius-selector: 1rem;
@@ -48,29 +49,29 @@
   name: "niramoydark";
   color-scheme: dark;
 
-  --color-base-100: #0e1b19;
-  --color-base-200: #132523;
-  --color-base-300: #1b302d;
-  --color-base-content: #e6f2ef;
+  --color-base-100: #0f1a1a;
+  --color-base-200: #15201f;
+  --color-base-300: #243230;
+  --color-base-content: #e6f0ee;
 
-  --color-primary: #2dd4bf;
+  --color-primary: #1fa89c;
   --color-primary-content: #06241f;
-  --color-secondary: #ff8787;
+  --color-secondary: #ff7a6b;
   --color-secondary-content: #2a0a0a;
-  --color-accent: #ffd166;
-  --color-accent-content: #2e2200;
+  --color-accent: #0a5c5a;
+  --color-accent-content: #ffffff;
 
-  --color-neutral: #e6f2ef;
-  --color-neutral-content: #0e1b19;
+  --color-neutral: #e6f0ee;
+  --color-neutral-content: #0f1a1a;
 
-  --color-info: #38bdf8;
-  --color-info-content: #042f49;
-  --color-success: #34d399;
-  --color-success-content: #052e22;
-  --color-warning: #fbbf24;
+  --color-info: #1fa89c;
+  --color-info-content: #06241f;
+  --color-success: #22a565;
+  --color-success-content: #ffffff;
+  --color-warning: #f4a52b;
   --color-warning-content: #2e2000;
-  --color-error: #f87171;
-  --color-error-content: #2a0606;
+  --color-error: #e5484d;
+  --color-error-content: #ffffff;
 
   --radius-selector: 1rem;
   --radius-field: 0.75rem;
