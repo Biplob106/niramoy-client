@@ -51,10 +51,10 @@ export default function RegisterPage() {
       <div className="card w-full max-w-md bg-base-100 shadow-2xl border border-base-200">
         <div className="card-body">
           <Link href="/" className="flex items-center justify-center gap-2 mb-1">
-            <span className="grid place-items-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary text-white font-bold shadow-md">
+            <span className="grid place-items-center w-10 h-10 rounded-xl bg-primary text-white font-bold shadow-md">
               নি
             </span>
-            <span className="text-2xl font-extrabold text-gradient">নিরাময়</span>
+            <span className="text-2xl font-extrabold text-primary">নিরাময়</span>
           </Link>
           <h2 className="text-2xl font-bold text-center">অ্যাকাউন্ট তৈরি করুন</h2>
           <p className="text-center text-sm opacity-60 mb-2">নিরাময় পরিবারে যোগ দিন</p>

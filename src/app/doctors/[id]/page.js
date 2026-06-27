@@ -42,7 +42,7 @@ export default function DoctorDetailsPage() {
     <div className="min-h-screen py-12 px-4 max-w-5xl mx-auto">
       <div className="card bg-base-100 shadow-xl border border-base-200 overflow-hidden">
         {/* গ্রেডিয়েন্ট হেডার */}
-        <div className="h-28 bg-gradient-to-r from-primary to-secondary"></div>
+        <div className="h-28 bg-gradient-to-r from-primary to-accent"></div>
 
         <div className="px-6 md:px-10 pb-8 -mt-16">
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-end">

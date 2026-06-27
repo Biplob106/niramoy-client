@@ -52,10 +52,10 @@ export default function DashboardLayout({ children }) {
         <ul className="menu bg-base-200 min-h-full w-64 p-4 border-r border-base-300">
           <li className="mb-4">
             <Link href="/" className="flex items-center gap-2 hover:bg-transparent">
-              <span className="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary text-white font-bold shadow-md">
+              <span className="grid place-items-center w-9 h-9 rounded-xl bg-primary text-white font-bold shadow-md">
                 নি
               </span>
-              <span className="text-xl font-extrabold text-gradient">নিরাময়</span>
+              <span className="text-xl font-extrabold text-primary">নিরাময়</span>
             </Link>
           </li>
           {role && (

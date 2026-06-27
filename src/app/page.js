@@ -25,7 +25,7 @@ export default function Home() {
               🩺 আপনার বিশ্বস্ত স্বাস্থ্যসেবা সঙ্গী
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-              আপনার <span className="text-gradient">সুস্থতার</span> ঠিকানা
+              আপনার <span className="text-primary">সুস্থতার</span> ঠিকানা
             </h1>
             <p className="py-6 text-lg opacity-80 max-w-xl mx-auto lg:mx-0">
               নিরাময়ের সাথে সহজেই অভিজ্ঞ ডাক্তার খুঁজুন, অ্যাপয়েন্টমেন্ট নিন আর ঘরে
@@ -64,7 +64,7 @@ export default function Home() {
             <div className="absolute top-8 -left-6 -z-10 w-24 h-24 rounded-full bg-secondary/10 blur-xl"></div>
             <div className="card bg-base-100 shadow-2xl rounded-[2rem] p-8 max-w-sm mx-auto">
               <div className="flex items-center gap-3 mb-5">
-                <span className="grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary text-white text-2xl shadow-lg">
+                <span className="grid place-items-center w-14 h-14 rounded-2xl bg-primary text-white text-2xl shadow-lg">
                   🩺
                 </span>
                 <div>
