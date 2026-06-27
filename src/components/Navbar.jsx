@@ -75,7 +75,7 @@ export default function Navbar() {
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ring-2 ring-primary/30 hover:ring-primary transition">
                 <div className="w-10 rounded-full">
                   <img
-                    src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName || "User"}&background=0e9f8e&color=fff`}
+                    src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName || "User"}&background=0e7c7b&color=fff`}
                     alt="user"
                   />
                 </div>
@@ -89,8 +89,8 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href="/login" className="btn btn-outline btn-primary btn-sm">লগইন</Link>
-              <Link href="/register" className="btn btn-primary btn-sm shadow-md">রেজিস্টার</Link>
+              <Link href="/login" className="btn btn-outline btn-primary btn-sm transition">লগইন</Link>
+              <Link href="/register" className="btn btn-secondary btn-sm shadow-md shadow-secondary/30 transition">রেজিস্টার</Link>
             </>
           )}
         </div>

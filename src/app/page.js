@@ -31,10 +31,10 @@ export default function Home() {
               বসেই নির্ভরযোগ্য স্বাস্থ্যসেবা পান।
             </p>
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <Link href="/doctors" className="btn btn-primary btn-lg shadow-lg shadow-primary/30">
+              <Link href="/doctors" className="btn btn-secondary btn-lg shadow-lg shadow-secondary/30 transition">
                 ডাক্তার খুঁজুন
               </Link>
-              <Link href="/about" className="btn btn-outline btn-lg">
+              <Link href="/about" className="btn btn-outline btn-primary btn-lg transition">
                 আমাদের সম্পর্কে
               </Link>
             </div>
@@ -50,7 +50,7 @@ export default function Home() {
                 <div className="text-sm opacity-60">সন্তুষ্ট রোগী</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-accent-content">২৪/৭</div>
+                <div className="text-2xl font-bold text-primary">২৪/৭</div>
                 <div className="text-sm opacity-60">সেবা উপলব্ধ</div>
               </div>
             </div>
@@ -58,6 +58,9 @@ export default function Home() {
 
           {/* ডান পাশ — ডেকোরেটিভ কার্ড */}
           <div className="relative hidden lg:block">
+            {/* সাবটল টিল অ্যাকসেন্ট শেপ */}
+            <div className="absolute -inset-4 -z-10 rounded-[3rem] bg-primary/10 rotate-6"></div>
+            <div className="absolute top-8 -left-6 -z-10 w-24 h-24 rounded-full bg-secondary/10 blur-xl"></div>
             <div className="card bg-base-100 shadow-2xl rounded-[2rem] p-8 max-w-sm mx-auto">
               <div className="flex items-center gap-3 mb-5">
                 <span className="grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary text-white text-2xl shadow-lg">
