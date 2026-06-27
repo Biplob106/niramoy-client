@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { axiosPublic } from "@/lib/axios";
 import useTitle from "@/hooks/useTitle";
+import DoctorCard from "@/components/DoctorCard";
 
 export default function DoctorsPage() {
   useTitle("ডাক্তার খুঁজুন");
@@ -86,37 +87,9 @@ export default function DoctorsPage() {
       ) : (
         <>
           {view === "card" ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {doctors.map((doc) => (
-                <div
-                  key={doc._id}
-                  className="card-hover card bg-base-100 shadow-md border border-base-200 overflow-hidden"
-                >
-                  <div className="h-16 bg-primary"></div>
-                  <div className="card-body items-center text-center -mt-12 pt-0">
-                    <img
-                      src={doc.profileImage}
-                      alt={doc.doctorName}
-                      className="rounded-full w-24 h-24 object-cover ring-4 ring-base-100 shadow-lg"
-                    />
-                    <h3 className="card-title mt-2">{doc.doctorName}</h3>
-                    <div className="badge badge-primary badge-outline">
-                      {doc.specialization}
-                    </div>
-                    <p className="text-sm opacity-70">
-                      {doc.experience} years • {doc.hospitalName}
-                    </p>
-                    <p className="font-bold text-primary text-lg">
-                      ৳{doc.consultationFee}
-                    </p>
-                    <Link
-                      href={`/doctors/${doc._id}`}
-                      className="btn btn-primary btn-sm btn-block mt-2"
-                    >
-                      বিস্তারিত দেখুন
-                    </Link>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {doctors.map((doc, i) => (
+                <DoctorCard key={doc._id} doctor={doc} index={i} />
               ))}
             </div>
           ) : (
