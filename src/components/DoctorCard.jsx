@@ -1,9 +1,12 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function DoctorCard({ doctor, index = 0 }) {
   const isVerified = doctor.verificationStatus === "verified";
+  const [imgError, setImgError] = useState(false);
+  const showImage = doctor.profileImage && !imgError;
 
   return (
     <motion.div
@@ -16,11 +19,12 @@ export default function DoctorCard({ doctor, index = 0 }) {
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-base-300 bg-base-100 transition hover:-translate-y-1 hover:shadow-xl">
         {/* বড় ইমেজ — কার্ডের মূল ফোকাস */}
         <div className="relative h-48 w-full bg-base-200">
-          {doctor.profileImage ? (
+          {showImage ? (
             <img
               src={doctor.profileImage}
               alt={doctor.doctorName}
               className="h-full w-full object-cover"
+              onError={() => setImgError(true)}
             />
           ) : (
             <div className="grid h-full w-full place-items-center text-primary">
