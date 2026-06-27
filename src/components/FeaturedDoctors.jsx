@@ -42,7 +42,7 @@ export default function FeaturedDoctors() {
                 className="card-hover card h-full bg-base-100 shadow-md hover:shadow-xl border border-base-300 rounded-2xl overflow-hidden"
               >
                 {/* গ্রেডিয়েন্ট টপ */}
-                <div className="h-16 bg-gradient-to-r from-primary to-accent"></div>
+                <div className="h-16 bg-primary"></div>
                 <div className="card-body items-center text-center -mt-12 pt-0">
                   <img
                     src={doc.profileImage}
