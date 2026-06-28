@@ -107,7 +107,9 @@ export default function DashboardPage() {
                         </span>
                       </td>
                       <td>
-                        {a.paymentStatus === "unpaid" ? (
+                        {["completed", "cancelled", "rejected"].includes(a.appointmentStatus) ? (
+                          <span className="text-sm opacity-60">—</span>
+                        ) : a.paymentStatus === "unpaid" ? (
                           <Link href={`/dashboard/payment/${a._id}`} className="btn btn-primary btn-xs">Pay</Link>
                         ) : (
                           <span className="text-success text-sm">✓ Paid</span>
