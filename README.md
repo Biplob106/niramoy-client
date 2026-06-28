@@ -1,6 +1,5 @@
 # নিরাময় (Niramoy) — Client
-
-> MediCare Connect — একটি ডিজিটাল হেলথকেয়ার অ্যাপয়েন্টমেন্ট প্ল্যাটফর্ম। রোগী অভিজ্ঞ ডাক্তার খুঁজে অ্যাপয়েন্টমেন্ট নেয়, অনলাইনে পেমেন্ট করে, প্রেসক্রিপশন ও রিভিউ ম্যানেজ করে। ডাক্তার ও অ্যাডমিনের জন্য আলাদা ড্যাশবোর্ড।
+Niramony  — একটি ডিজিটাল হেলথকেয়ার অ্যাপয়েন্টমেন্ট প্ল্যাটফর্ম। রোগী অভিজ্ঞ ডাক্তার খুঁজে অ্যাপয়েন্টমেন্ট নেয়, অনলাইনে পেমেন্ট করে, প্রেসক্রিপশন ও রিভিউ ম্যানেজ করে। ডাক্তার ও অ্যাডমিনের জন্য আলাদা ড্যাশবোর্ড।
 
 This is the **frontend** of Niramoy, built with Next.js (App Router).
 
@@ -111,4 +110,4 @@ This documents how authentication flows end-to-end (Challenge 3):
 
 ## Author
 
-Built as the MediCare Connect (Niramoy) assignment.
+Built as Niramoy app
