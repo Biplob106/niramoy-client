@@ -32,7 +32,7 @@ export default function FeaturedDoctors() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {doctors.map((doc, i) => (
+            {doctors.slice(0, 6).map((doc, i) => (
               <DoctorCard key={doc._id} doctor={doc} index={i} />
             ))}
           </div>

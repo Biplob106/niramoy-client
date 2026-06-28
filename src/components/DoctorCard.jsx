@@ -22,43 +22,58 @@ export default function DoctorCard({ doctor, index = 0 }) {
       transition={{ duration: 0.4, delay: index * 0.05 }}
       className="h-full"
     >
-      <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-base-300 bg-base-100 transition hover:-translate-y-1 hover:shadow-xl">
-        {/* বড় ইমেজ — কার্ডের মূল ফোকাস */}
-        <div className="relative h-48 w-full bg-base-200">
-          <img
-            src={imageSrc}
-            alt={doctor.doctorName}
-            className="h-full w-full object-cover object-top"
-            onError={() => setImgError(true)}
-          />
-
-          {isVerified && (
-            <span className="absolute right-3 top-3 rounded-full bg-primary px-2.5 py-1 text-[0.7rem] font-medium text-white shadow-sm">
-              ✓ যাচাইকৃত
-            </span>
-          )}
+      <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-base-300 bg-base-100 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10">
+        {/* টপ teal ব্যান্ড + গোল অ্যাভাটার */}
+        <div className="relative h-20 bg-gradient-to-r from-primary to-accent">
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2">
+            <div className="relative">
+              <img
+                src={imageSrc}
+                alt={doctor.doctorName}
+                className="h-24 w-24 rounded-full object-cover object-top ring-4 ring-base-100 bg-base-200 shadow-md transition duration-300 group-hover:scale-105"
+                onError={() => setImgError(true)}
+              />
+              {isVerified && (
+                <span
+                  title="যাচাইকৃত ডাক্তার"
+                  className="absolute -bottom-0.5 -right-0.5 grid h-7 w-7 place-items-center rounded-full bg-primary text-sm text-white shadow-sm ring-2 ring-base-100"
+                >
+                  ✓
+                </span>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* বডি */}
-        <div className="flex flex-1 flex-col gap-2 p-4">
-          <h3 className="text-base font-medium text-base-content">
+        <div className="flex flex-1 flex-col items-center gap-1 px-5 pb-5 pt-16 text-center">
+          <h3 className="text-lg font-semibold text-base-content">
             {doctor.doctorName}
           </h3>
 
-          <div className="badge badge-outline border-primary text-primary">
+          <span className="badge badge-sm border-0 bg-primary/10 font-medium text-primary">
             {doctor.specialization}
-          </div>
+          </span>
 
-          <div className="mt-1 flex items-center justify-between text-sm">
-            <span className="opacity-60">{doctor.experience} বছর</span>
-            <span className="font-medium text-primary">
-              ৳{doctor.consultationFee}
-            </span>
+          {/* info row */}
+          <div className="my-4 grid w-full grid-cols-2 divide-x divide-base-300 rounded-2xl bg-base-200/60 py-3">
+            <div className="flex flex-col">
+              <span className="text-sm font-bold text-base-content">
+                {doctor.experience}+
+              </span>
+              <span className="text-xs opacity-60">বছর অভিজ্ঞতা</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-sm font-bold text-primary">
+                ৳{doctor.consultationFee}
+              </span>
+              <span className="text-xs opacity-60">কনসাল্টেশন ফি</span>
+            </div>
           </div>
 
           <Link
             href={`/doctors/${doctor._id}`}
-            className="btn btn-primary btn-block mt-auto"
+            className="btn btn-primary btn-block mt-auto rounded-xl"
           >
             বিস্তারিত দেখুন
           </Link>
