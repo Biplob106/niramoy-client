@@ -3,6 +3,7 @@ import FeaturedDoctors from "@/components/FeaturedDoctors";
 import Statistics from "@/components/Statistics";
 import WhyChoose from "@/components/WhyChoose";
 import Testimonials from "@/components/Testimonials";
+import Faq from "@/components/Faq";
 
 export default function Home() {
   const specializations = [
@@ -16,75 +17,61 @@ export default function Home() {
   return (
     <div>
       {/* ---------- Banner / Hero ---------- */}
-      <section className="bg-hero-mesh">
-        <div className="max-w-7xl mx-auto px-4 py-20 md:py-28 grid lg:grid-cols-2 gap-10 items-center">
-          {/* বাম পাশ */}
+      <section className="bg-gradient-to-br from-primary to-accent text-white">
+        <div className="max-w-7xl mx-auto px-4 py-20 md:py-28 grid lg:grid-cols-2 gap-12 items-center">
+          {/* বাম পাশ — টেক্সট */}
           <div className="text-center lg:text-left">
-            <span className="badge badge-lg bg-primary/10 text-primary border-0 font-medium mb-5">
-              🩺 আপনার বিশ্বস্ত স্বাস্থ্যসেবা সঙ্গী
+            <span className="badge badge-lg bg-white/15 text-white border-0 font-medium mb-5 backdrop-blur-sm">
+              🩺 বিশ্বস্ত স্বাস্থ্যসেবা প্ল্যাটফর্ম
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-              আপনার <span className="text-gradient">সুস্থতার</span> ঠিকানা
+              আপনার সুস্থতার <span className="text-secondary">নির্ভরযোগ্য</span> ঠিকানা
             </h1>
-            <p className="py-6 text-lg opacity-80 max-w-xl mx-auto lg:mx-0">
+            <p className="py-6 text-lg text-white/80 max-w-xl mx-auto lg:mx-0">
               নিরাময়ের সাথে সহজেই অভিজ্ঞ ডাক্তার খুঁজুন, অ্যাপয়েন্টমেন্ট নিন আর ঘরে
               বসেই নির্ভরযোগ্য স্বাস্থ্যসেবা পান।
             </p>
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <Link href="/doctors" className="btn btn-primary btn-lg shadow-lg shadow-primary/30">
-                ডাক্তার খুঁজুন
+              <Link
+                href="/doctors"
+                className="btn btn-lg bg-white text-primary border-0 hover:bg-white/90 shadow-lg shadow-black/10 transition"
+              >
+                অ্যাপয়েন্টমেন্ট নিন
               </Link>
-              <Link href="/about" className="btn btn-outline btn-lg">
-                আমাদের সম্পর্কে
+              <Link
+                href="/doctors"
+                className="btn btn-lg btn-outline text-white border-white/60 hover:bg-white hover:text-primary hover:border-white transition"
+              >
+                ডাক্তার দেখুন
               </Link>
             </div>
 
-            {/* ছোট ট্রাস্ট চিপ */}
-            <div className="flex flex-wrap gap-6 justify-center lg:justify-start mt-10">
+            {/* পরিসংখ্যান */}
+            <div className="flex flex-wrap gap-8 justify-center lg:justify-start mt-10">
               <div>
-                <div className="text-2xl font-bold text-primary">৫০০+</div>
-                <div className="text-sm opacity-60">যাচাইকৃত ডাক্তার</div>
+                <div className="text-3xl font-bold">৫০০+</div>
+                <div className="text-sm text-white/70">যাচাইকৃত ডাক্তার</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-secondary">১০ হাজার+</div>
-                <div className="text-sm opacity-60">সন্তুষ্ট রোগী</div>
+                <div className="text-3xl font-bold">১০হা+</div>
+                <div className="text-sm text-white/70">সন্তুষ্ট রোগী</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-accent-content">২৪/৭</div>
-                <div className="text-sm opacity-60">সেবা উপলব্ধ</div>
+                <div className="text-3xl font-bold">২৪/৭</div>
+                <div className="text-sm text-white/70">সেবা উপলব্ধ</div>
               </div>
             </div>
           </div>
 
-          {/* ডান পাশ — ডেকোরেটিভ কার্ড */}
-          <div className="relative hidden lg:block">
-            <div className="card bg-base-100 shadow-2xl rounded-[2rem] p-8 max-w-sm mx-auto">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary text-white text-2xl shadow-lg">
-                  🩺
-                </span>
-                <div>
-                  <p className="font-bold">দ্রুত অ্যাপয়েন্টমেন্ট</p>
-                  <p className="text-sm opacity-60">মাত্র কয়েক ক্লিকে</p>
-                </div>
-              </div>
-              <div className="space-y-3">
-                {["অনলাইন কনসাল্টেশন", "নিরাপদ পেমেন্ট", "ডিজিটাল প্রেসক্রিপশন"].map(
-                  (t) => (
-                    <div
-                      key={t}
-                      className="flex items-center gap-3 bg-base-200 rounded-xl px-4 py-3"
-                    >
-                      <span className="text-success text-lg">✓</span>
-                      <span className="font-medium">{t}</span>
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
-            {/* ফ্লোটিং ব্যাজ */}
-            <div className="absolute -top-4 -right-2 badge badge-secondary badge-lg shadow-lg gap-1">
-              ⭐ 4.9 রেটিং
+          {/* ডান পাশ — ছবি */}
+          <div className="relative">
+            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-black/20 ring-1 ring-white/20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/hero.png"
+                alt="নিরাময় — বিশ্বস্ত ডাক্তার ও স্বাস্থ্যসেবা"
+                className="w-full h-[26rem] md:h-[30rem] object-cover"
+              />
             </div>
           </div>
         </div>
@@ -117,6 +104,7 @@ export default function Home() {
       <WhyChoose />
       <Statistics />
       <Testimonials />
+      <Faq />
     </div>
   );
 }

@@ -53,7 +53,7 @@ const router = useRouter();
           <p className="opacity-60">কোনো appointment request নেই।</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-zebra">
               <thead>
                 <tr>
                   <th>Patient</th><th>Date</th><th>Time</th><th>Status</th><th>Action</th>

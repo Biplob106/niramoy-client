@@ -68,7 +68,7 @@ export default function ManageUsersPage() {
           <p className="opacity-60">কোনো ইউজার পাওয়া যায়নি।</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-zebra">
               <thead>
                 <tr>
                   <th>Name</th>

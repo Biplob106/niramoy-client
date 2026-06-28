@@ -20,8 +20,8 @@ export default function Statistics() {
   return (
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-[2rem] bg-gradient-to-br from-primary to-secondary p-1 shadow-xl">
-          <div className="rounded-[1.9rem] bg-base-100 px-6 py-12">
+        <div className="rounded-[2rem] border border-base-300 bg-base-100 shadow-xl">
+          <div className="rounded-[2rem] px-6 py-12">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
               আমাদের পরিসংখ্যান
             </h2>
@@ -38,7 +38,7 @@ export default function Statistics() {
                   <div className="grid place-items-center w-16 h-16 mx-auto rounded-2xl bg-primary/10 text-3xl mb-3">
                     {it.icon}
                   </div>
-                  <div className="text-3xl md:text-4xl font-extrabold text-gradient">
+                  <div className="text-3xl md:text-4xl font-extrabold text-primary">
                     {it.value}+
                   </div>
                   <div className="opacity-70 mt-1">{it.label}</div>

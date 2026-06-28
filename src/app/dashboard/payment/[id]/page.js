@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { Elements } from "@stripe/react-stripe-js";
 import PrivateRoute from "@/components/PrivateRoute";
@@ -37,6 +38,25 @@ export default function PaymentPage() {
         {!appointment ? (
           <div className="flex justify-center">
             <span className="loading loading-spinner loading-lg text-primary"></span>
+          </div>
+        ) : appointment.paymentStatus === "paid" ||
+          ["completed", "cancelled", "rejected"].includes(
+            appointment.appointmentStatus
+          ) ? (
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card-body text-center">
+              <p className="text-lg font-semibold">
+                {appointment.paymentStatus === "paid"
+                  ? "এই অ্যাপয়েন্টমেন্টের পেমেন্ট ইতিমধ্যে সম্পন্ন হয়েছে।"
+                  : "এই অ্যাপয়েন্টমেন্টের জন্য পেমেন্ট করা যাবে না।"}
+              </p>
+              <p className="text-sm opacity-60">
+                স্ট্যাটাস: {appointment.appointmentStatus} / {appointment.paymentStatus}
+              </p>
+              <Link href="/dashboard/appointments" className="btn btn-primary btn-sm mt-2">
+                আমার অ্যাপয়েন্টমেন্টে ফিরে যান
+              </Link>
+            </div>
           </div>
         ) : (
           <div className="card bg-base-100 shadow-xl">

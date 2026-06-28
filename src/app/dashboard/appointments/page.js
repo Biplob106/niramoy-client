@@ -20,6 +20,9 @@ export default function MyAppointmentsPage() {
   const [newDate, setNewDate] = useState("");
   const [newTime, setNewTime] = useState("");
 
+  // আজকের তারিখ (YYYY-MM-DD) — অতীতের দিনে রিশিডিউল করা যাবে না
+  const today = new Date().toLocaleDateString("en-CA");
+
   // prescription view modal state
   const [viewingRx, setViewingRx] = useState(null); // appointment
   const [prescription, setPrescription] = useState(null);
@@ -73,6 +76,9 @@ export default function MyAppointmentsPage() {
     if (!newDate || !newTime) {
       return toast.error("দিন ও সময় দিন");
     }
+    if (newDate < today) {
+      return toast.error("অতীতের তারিখ নির্বাচন করা যাবে না");
+    }
     try {
       await axiosSecure.patch(`/appointments/reschedule/${editing._id}`, {
         appointmentDate: newDate,
@@ -118,7 +124,7 @@ export default function MyAppointmentsPage() {
           <p className="opacity-60">এখনো কোনো অ্যাপয়েন্টমেন্ট নেই।</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-zebra">
               <thead>
                 <tr>
                   <th>Doctor</th>
@@ -207,6 +213,7 @@ export default function MyAppointmentsPage() {
                   <input
                     type="date"
                     value={newDate}
+                    min={today}
                     onChange={(e) => setNewDate(e.target.value)}
                     className="input input-bordered w-full"
                   />

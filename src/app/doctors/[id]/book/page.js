@@ -20,6 +20,9 @@ export default function BookPage() {
   const [time, setTime] = useState("");
   const [symptoms, setSymptoms] = useState("");
 
+  // আজকের তারিখ (YYYY-MM-DD) — এর আগের কোনো দিন বুক করা যাবে না
+  const today = new Date().toLocaleDateString("en-CA");
+
   useEffect(() => {
     axiosPublic.get(`/doctors/${id}`).then((res) => setDoctor(res.data));
   }, [id]);
@@ -28,6 +31,9 @@ export default function BookPage() {
     e.preventDefault();
     if (!date || !time) {
       return toast.error("দয়া করে দিন ও সময় নির্বাচন করুন");
+    }
+    if (date < today) {
+      return toast.error("অতীতের তারিখ নির্বাচন করা যাবে না");
     }
     try {
       await axiosSecure.post("/appointments", {
@@ -67,7 +73,7 @@ export default function BookPage() {
             <form onSubmit={handleBook} className="space-y-3 mt-4">
               <div>
                 <label className="label">Date</label>
-                <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
+                <input type="date" value={date} min={today} onChange={(e) => setDate(e.target.value)}
                   className="input input-bordered w-full" />
               </div>
 

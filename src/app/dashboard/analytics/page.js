@@ -87,7 +87,7 @@ export default function AnalyticsPage() {
                   <Bar
                     dataKey="avgRating"
                     name="গড় রেটিং"
-                    fill="#570df8"
+                    fill="#0e7c7b"
                     radius={[6, 6, 0, 0]}
                   />
                 </BarChart>

@@ -44,7 +44,7 @@ export default function AllAppointmentsPage() {
           <p className="opacity-60">কোনো অ্যাপয়েন্টমেন্ট নেই।</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table table-zebra">
               <thead>
                 <tr>
                   <th>Patient</th>

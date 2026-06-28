@@ -57,10 +57,10 @@ export default function Navbar() {
             </ul>
           </div>
           <Link href="/" className="flex items-center gap-2 px-2">
-            <span className="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary text-white font-bold shadow-md">
+            <span className="grid place-items-center w-9 h-9 rounded-xl bg-primary text-white font-bold shadow-md">
               নি
             </span>
-            <span className="text-2xl font-extrabold text-gradient">নিরাময়</span>
+            <span className="text-2xl font-extrabold text-primary">নিরাময়</span>
           </Link>
         </div>
 
@@ -75,7 +75,7 @@ export default function Navbar() {
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ring-2 ring-primary/30 hover:ring-primary transition">
                 <div className="w-10 rounded-full">
                   <img
-                    src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName || "User"}&background=0e9f8e&color=fff`}
+                    src={user.photoURL || `https://ui-avatars.com/api/?name=${user.displayName || "User"}&background=0e7c7b&color=fff`}
                     alt="user"
                   />
                 </div>
@@ -89,8 +89,8 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href="/login" className="btn btn-outline btn-primary btn-sm">লগইন</Link>
-              <Link href="/register" className="btn btn-primary btn-sm shadow-md">রেজিস্টার</Link>
+              <Link href="/login" className="btn btn-outline btn-primary btn-sm transition">লগইন</Link>
+              <Link href="/register" className="btn btn-primary btn-sm shadow-md shadow-primary/30 transition">রেজিস্টার</Link>
             </>
           )}
         </div>
