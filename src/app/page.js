@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import FeaturedDoctors from "@/components/FeaturedDoctors";
 import Statistics from "@/components/Statistics";
 import WhyChoose from "@/components/WhyChoose";
@@ -64,39 +63,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ডান পাশ — ছবি + ফ্লোটিং কার্ড */}
+          {/* ডান পাশ — ছবি */}
           <div className="relative">
             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-black/20 ring-1 ring-white/20">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/hero.png"
                 alt="নিরাময় — বিশ্বস্ত ডাক্তার ও স্বাস্থ্যসেবা"
-                width={640}
-                height={640}
-                priority
                 className="w-full h-[26rem] md:h-[30rem] object-cover"
               />
-            </div>
-
-            {/* ফ্লোটিং কার্ড — সহজ বুকিং */}
-            <div className="absolute -top-4 -left-4 md:left-2 bg-base-100 text-base-content rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
-              <span className="grid place-items-center w-11 h-11 rounded-xl bg-primary/10 text-2xl">
-                📅
-              </span>
-              <div>
-                <p className="font-bold text-sm leading-tight">সহজ বুকিং</p>
-                <p className="text-xs opacity-60">মাত্র কয়েক ক্লিকে</p>
-              </div>
-            </div>
-
-            {/* ফ্লোটিং কার্ড — যাচাইকৃত ডাক্তার */}
-            <div className="absolute -bottom-4 -right-4 md:right-2 bg-base-100 text-base-content rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
-              <span className="grid place-items-center w-11 h-11 rounded-xl bg-success/10 text-2xl">
-                🛡️
-              </span>
-              <div>
-                <p className="font-bold text-sm leading-tight">যাচাইকৃত ডাক্তার</p>
-                <p className="text-xs opacity-60">১০০% নির্ভরযোগ্য</p>
-              </div>
             </div>
           </div>
         </div>
