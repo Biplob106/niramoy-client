@@ -5,9 +5,8 @@ This is the **frontend** of Niramoy, built with Next.js (App Router).
 
 ## Live Links
 
-- **Client (Live):** _add your deployed client URL here_
-- **Server (Live):** _add your deployed server URL here_
-- **Server Repo:** _add your server repo URL here_
+- **Client (Live):(https://niramoy-client.vercel.app/)
+- **Server (Live):(https://niramoy-server.vercel.app/)
 
 ## Features
 
